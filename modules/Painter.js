@@ -1,3 +1,4 @@
+import { prettyPrice } from "./helper.js";
 import Painting from "./Painting.js";
 
 class Painter {
@@ -26,14 +27,13 @@ class Painter {
 
     for (let i = 0; i < this.listOfPaintings.length; i++) {
       const tab = "    ";
-      const prettyPrice = isNaN(this.listOfPaintings[i].price)
-        ? "Unknown"
-        : `${this.listOfPaintings[i].price.toLocaleString("fr-FR")} €`;
 
       result += `${tab}<li>\n`;
       result += `${tab}${tab}name: <span>${this.listOfPaintings[i].name}</span><br>\n`;
       result += `${tab}${tab}canvas: <em>${this.listOfPaintings[i].canvasSize}</em><br>\n`;
-      result += `${tab}${tab}price: <strong>${prettyPrice}</strong>\n`;
+      result += `${tab}${tab}price: <strong>${prettyPrice(
+        this.listOfPaintings[i].price
+      )}</strong>\n`;
       result += `${tab}</li>\n`;
     }
 
